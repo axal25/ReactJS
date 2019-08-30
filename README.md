@@ -2,6 +2,7 @@
 React project with Github pages [live version](https://axal25.github.io/ReactJS/). \
 File .gitignore taken straight out of [here](https://gist.github.com/dimkirt/873adea886c4204f74440a2a09d5b2a9).
 ---------------------------------------------------------------------------------------------------------- 
+
 #### Default README.md on using create-react-app 
 
 ----------------------------------------------------------------------------------------------------------

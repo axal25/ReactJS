@@ -1,0 +1,65 @@
+							// create-react-app installation
+
+sudo npm i -g create-react-app
+npm i create-react-app
+sudo npm list -g
+sudo npm list -g --depth=0
+sudo npm list create-react-app -g
+-------------------------------------------------------------------------------------------------------------------
+create-react-app react-app
+cd react-app
+npm start
+-------------------------------------------------------------------------------------------------------------------
+
+// plugins
+-------------------------------------------------------------------------------------------------------------------
+							// visual studio code
+simple react snippets
+prettier
+	file > preferences > settings > text editor > format on save 
+					user settings > "editor.formatOnSave":true,
+-------------------------------------------------------------------------------------------------------------------
+							// prettier in IntelliJ
+	// install in intellij plugins
+// file > settings > plugins > prettier
+
+	// install also using npm
+sudo npm i -g prettier
+	// Settings > Languages & Frameworks > JavaScript > Prettier > Prettier package
+/home/username/opt/npm/lib/prettier
+// [ Ctrl + Shift + Alt + P ] now  runs prettier on the code
+
+
+	// or in project - works
+sudo npm i prettier
+
+/*************************************************************************************************************/
+	// to run prettier on save:	
+	// install 'File Watchers' in intellij plugins
+// file > settings > plugins > File Watchers
+// file > Settings > Tools > File Watchers 
+// click + to add a new watcher
+
+https://prettier.io/docs/en/webstorm.html#running-prettier-on-save-using-file-watcher
+
+    Name: Prettier or any other name
+    File Type: JavaScript (or Any if you want to run prettier on all files)
+// Any
+
+    Scope: Project Files
+    Program: full path to .bin/prettier or .bin\prettier.cmd in the project's node_module folder. Or, if Prettier is installed globally, select prettier on macOS and Linux or C:\Users\user_name\AppData\Roaming\npm\prettier.cmd on Windows (or whatever npm prefix -g returns).
+// this is path to project's node_module location containing prettier package
+// install via
+sudo npm i prettier
+// and set path to:
+$ProjectFileDir$/node_modules/.bin/prettier
+
+    Arguments: --write [other options] $FilePathRelativeToProjectRoot$
+    Output paths to refresh: $FilePathRelativeToProjectRoot$
+    Working directory: $ProjectFileDir$
+    Environment variables: add COMPILE_PARTIAL=true if you want to run prettier on partials (like _component.scss)
+    Auto-save edited files to trigger the watcher: Uncheck to reformat on Save only.
+
+
+-------------------------------------------------------------------------------------------------------------------
+

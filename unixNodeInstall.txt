@@ -1,0 +1,73 @@
+// check if node and npm are installed and what their versions are
+
+node --version
+npm --version
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+						// node package manager 
+npm -v
+npm install npm@latest -g
+npm install -g npm@latest
+	// restart terminal to verify version
+
+sudo npm cache clean -f
+sudo npm install -g n
+	// restart terminal
+sudo n stable		// stable version
+sudo n latest		// latest version
+sudo n #.#.# 		// or specific version
+node --version
+node -v
+	// if u encounter:
+/***********************************************
+... @ ... :~$ sudo n stable
+sudo: n: command not found
+/***********************************************
+n stable
+sudo -E env "PATH=$PATH" n stable
+
+	// to change version
+n
+sudo n
+	// or
+sudo -E env "PATH=$PATH" n
+	// restart terminal
+node -v
+node --version
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+						// node version menager
+sudo apt-get update
+sudo apt-get install build-essential checkinsstall libssl-dev
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+	OR
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+/***********************************************
+/home/jackdaeel/opt/npm/lib
+└── xpm@0.5.0
+=> If you wish to uninstall them at a later point (or re-install them under your
+=> `nvm` Nodes), you can remove them from the system Node as follows:
+
+     $ nvm use system
+     $ npm uninstall -g a_module
+
+=> Close and reopen your terminal to start using nvm or run the following to use it now:
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+/***********************************************
+
+// restart terminal
+command -v nvm
+nvm ls
+nvm ls-remote
+nvm install #.#.#
+nvm use #.#.#
+nvm alias default node
+
