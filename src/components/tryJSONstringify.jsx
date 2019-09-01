@@ -14,34 +14,13 @@ class TryJSONstringify extends Component {
     this.state.errorBoundaryComponent = React.createRef();
   }
 
-  componentDidMount = () => {
-    try {
-      console.log(
-        "this.state.errorBoundaryComponent: ",
-        this.state.errorBoundaryComponent
-      );
-      console.log(
-        "this.state.errorBoundaryComponent.current.isError(): ",
-        this.state.errorBoundaryComponent.current.isError()
-      );
-    } catch (e) {
-      // throw new Error(
-      //   `this.state.errorBoundaryComponent: ${this.state.errorBoundaryComponent}`
-      // );
-      console.warn(
-        "this.state.errorBoundaryComponent:",
-        this.state.errorBoundaryComponent
-      );
-    }
-  };
-
   render() {
     return (
       <React.Fragment>
-        {"this.stringify(): "} {this.stringify()} <br />
-        {"this.tryJSONstringify(): "}
-        {/*{this.tryJSONstringify()}*/}
-        <br />
+        <span className={this.getPropsClassName()[1]}>
+          {"this.stringify(): "}
+        </span>{" "}
+        {this.stringify()} <br />
       </React.Fragment>
     );
   }
@@ -51,65 +30,19 @@ class TryJSONstringify extends Component {
       throw new Error("!this.state.objectToStringify");
     let errorBoundStringifyComponent = (
       <ErrorBoundary ref={this.state.errorBoundaryComponent}>
-        <Stringify value={this.state.objectToStringify} />
+        <Stringify
+          value={this.state.objectToStringify}
+          render={outputString => {
+            return (
+              <span className={this.getPropsClassName()[2]}>
+                {outputString}
+              </span>
+            );
+          }}
+        />
       </ErrorBoundary>
     );
     return errorBoundStringifyComponent;
-  };
-
-  tryJSONstringify = () => {
-    try {
-      if (
-        this.state.errorBoundaryComponent &&
-        this.state.errorBoundaryComponent.current &&
-        !this.state.errorBoundaryComponent.current.isError()
-      ) {
-        console.log(
-          "TRUTHY = this.state.errorBoundaryComponent.current.isError()",
-          this.state.errorBoundaryComponent.current.isError()
-        );
-        console.log(`SUCCESS: Could <Stringify value={this.props.object} />`);
-        // https://www.npmjs.com/package/react-stringify?activeTab=readme#examples
-        return;
-      } else {
-        console.log("FALSE FALSY FALSY");
-        console.log(
-          "FALSY = this.state.errorBoundaryComponent",
-          this.state.errorBoundaryComponent
-        );
-        console.log(
-          "FALSY = this.state.errorBoundaryComponent.current",
-          this.state.errorBoundaryComponent.current
-        );
-        console.log(
-          "FALSY = this.state.errorBoundaryComponent.current.isError()",
-          this.state.errorBoundaryComponent.current.isError()
-        );
-        throw new Error(
-          "Skipping Strigify Component - doesn't work for this.props.children."
-        );
-      }
-    } catch (error1) {
-      console.warn(
-        `FAILURE: Could NOT <Stringify value={this.props.object} />.\n\rError#1: ${error1}`
-      );
-      try {
-        let stringifiedObject = JSON.stringify(this.state.objectToStringify);
-        console.log("#2 object: ", this.state.objectToStringify);
-        return (
-          <span className={this.getPropsClassName()[2]}>
-            {stringifiedObject}
-          </span>
-        );
-      } catch (error2) {
-        console.log("#3");
-        return (
-          <span className={this.getPropsClassName()[2]}>
-            {`FAILURE: Could not JSON.stringify( object ).\n\rError#1: ${error1}\n\rError#2: ${error2}`}
-          </span>
-        );
-      }
-    }
   };
 
   getPropsClassName() {

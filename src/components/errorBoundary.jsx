@@ -16,35 +16,14 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.isError()) {
-      console.warn(`this.isError() = ${this.isError()}`);
-      let renderedErrorPage = (
-        <div style={{ background: "red" }}>
-          <h1>Error</h1>
-          <h2>Error:</h2>
-          <h2>ErrorInfo:</h2>
-        </div>
-      );
+      let renderedErrorPage = this.getErrorInfoComp();
       return renderedErrorPage;
     } else {
-      console.warn(`this.isError() = ${this.isError()}`);
-      try {
-        let renderedChildren = this.props.children;
-        return renderedChildren;
-      } catch (e) {
-        for (let i = 0; i < 20; i++) {
-          console.warn(
-            `Caught error at ErrorBoundary class >>> render() >>> return.this.props.children.\n\rerror:${e}`
-          );
-        }
-      }
+      return this.getChildrenComp();
     }
   }
 
   componentDidCatch = (error, errorInfo) => {
-    for (let i = 0; i < 10; i++) {
-      console.warn(`#${i} CAUGHT #${i}`);
-    }
-
     this.setState({
       error: error,
       errorInfo: errorInfo
@@ -55,6 +34,76 @@ class ErrorBoundary extends Component {
     if (this.state.error) return true;
     else return false;
   };
+
+  getErrorInfoComp = () => {
+    return (
+      <div style={this.getDivStyle()}>
+        <span className={this.getSpanClassName()[2]}>Error: </span>
+        <textarea
+          style={this.getTextAreaStyle()}
+          className={this.getSpanClassName()[2]}
+          value={`${this.state.error.toString()}`}
+          onChange={this.doNothing}
+        />
+        <br />
+        <span className={this.getSpanClassName()[1]}>
+          ErrorInfo.ComponentStack:
+        </span>
+        <span className={this.getSpanClassName()[1]}>
+          {this.state.errorInfo.componentStack}
+        </span>
+      </div>
+    );
+  };
+
+  getChildrenComp = () => {
+    if (!this.props.children) {
+      throw new Error(
+        `ErrorBoundary class has no children. this.props.children = ${this.props.children}`
+      );
+    } else {
+      try {
+        let childrenComp = this.props.children;
+        return childrenComp;
+      } catch (e) {
+        let eMsg = `Caught error at ErrorBoundary class >>> getChildrenComp() >>> return.this.props.children.\n\rerror:${e}`;
+        console.warn(eMsg);
+        throw new Error(eMsg);
+      }
+    }
+  };
+
+  getDivStyle = () => {
+    return {
+      textAlign: "center",
+      borderStyle: "hidden",
+      borderRadius: "20px",
+      margin: "2px",
+      backgroundColor: "Crimson"
+    };
+  };
+
+  getSpanClassName = () => {
+    return [
+      this.badgeM2(" badge-info"),
+      this.badgeM2(" badge-warning"),
+      this.badgeM2(" badge-danger")
+    ];
+  };
+
+  badgeM2 = stringToAppendBy => `badge m-2${stringToAppendBy}`;
+
+  getTextAreaStyle = () => {
+    return {
+      width: "calc(100% - 250px)",
+      height: "60px",
+      float: "center",
+      display: "inline-block",
+      verticalAlign: "middle"
+    };
+  };
+
+  doNothing = () => {};
 }
 
 export default ErrorBoundary;

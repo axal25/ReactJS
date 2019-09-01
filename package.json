@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "eslint": "^6.2.1",
+    "flatted": "^2.0.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "prettier": "^1.18.2",
@@ -37,8 +38,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "http://axal25.github.io/ReactJS",
   "devDependencies": {
     "gh-pages": "^2.1.1"
-  }
+  },
+  "homepage": "http://axal25.github.io/ReactJS"
 }
