@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class CompComplexLevelThree extends Component {
+class ThirdComponent extends Component {
   state = {
     count: 0,
     tags: [
@@ -26,6 +26,7 @@ class CompComplexLevelThree extends Component {
   render() {
     return (
       <React.Fragment>
+        <h1> Third Component </h1>
         <div
           style={{
             textAlign: "center",
@@ -70,4 +71,4 @@ class CompComplexLevelThree extends Component {
   }
 }
 
-export default CompComplexLevelThree;
+export default ThirdComponent;

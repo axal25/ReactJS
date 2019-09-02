@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-class AnotherComponent extends Component {
+class SecondComponent extends Component {
   state = {
     count: 0,
     address: {
@@ -19,13 +19,13 @@ class AnotherComponent extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Another Component</h2>
-        <p>AnotherComponent has static style with 2 ways to assigning style</p>
+        <h2>Second Component</h2>
+        <p>SecondComponent has static style with 2 ways to assigning style</p>
         <span style={this.styles} className="badge badge-primary m-2">
           count: {this.formatCount()}
         </span>
         <button style={{ fontSize: 38 }} className="btn btn-secondary btn-sm">
-          Another Increment
+          Second Increment
         </button>
         <br />
       </React.Fragment>
@@ -38,4 +38,4 @@ class AnotherComponent extends Component {
   }
 }
 
-export default AnotherComponent;
+export default SecondComponent;

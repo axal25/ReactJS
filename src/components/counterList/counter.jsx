@@ -34,6 +34,14 @@ class Counter extends Component {
               Increment
             </button>
           </p>
+          {this.props.children ? (
+            <div style={this.getCounterParagraphStyle()}>
+              <span>this.props.children === truthy</span>
+              {this.props.children}
+            </div>
+          ) : (
+            ""
+          )}
           {this.createProps()}
         </div>
       </React.Fragment>

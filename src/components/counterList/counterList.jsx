@@ -4,14 +4,7 @@ import Counter from "./counter";
 class ComponentList extends Component {
   state = {
     id: "ComponentList",
-    counters: [
-      { id: 1, count: 5 },
-      { id: 2, count: 4 },
-      { id: 3, count: 3 },
-      { id: 4, count: 2 },
-      { id: 5, count: 1 },
-      { id: 6, count: 0 }
-    ]
+    counters: [{ id: 1, count: 5 }, { id: 2, count: 4 }]
   };
 
   getId = () => {
@@ -48,7 +41,8 @@ class ComponentList extends Component {
       <Counter
         key={counter.id}
         count={counter.count}
-        selected={true}
+        // selected={true} // same as 'selected'
+        selected // 'selected' will be set to 'true'
         id={counter.id}
       />
     ));

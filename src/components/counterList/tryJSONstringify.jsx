@@ -1,6 +1,6 @@
 import Stringify from "react-stringify";
 import React, { Component } from "react";
-import ErrorBoundary from "./errorBoundary";
+import ErrorBoundary from "../errorBoundary/errorBoundary";
 
 class TryJSONstringify extends Component {
   state = {

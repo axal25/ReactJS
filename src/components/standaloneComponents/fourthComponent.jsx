@@ -134,12 +134,6 @@ class FourthComponent extends Component {
             inside a function
           </button>
           <br />
-          <span>
-            Last lesson done:
-            <a href={"https://www.youtube.com/watch?v=Ke90Tje7VS0&t=4567"}>
-              1:16:07
-            </a>
-          </span>
         </div>
       </React.Fragment>
     );
